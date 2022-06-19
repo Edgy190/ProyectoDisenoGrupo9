@@ -48,7 +48,6 @@ const CompEditNormalUser = () => {
         setFull_name(res.data.full_name)
         setEmail(res.data.email)
         setEmail2(res.data.email2)
-        setPassword_user(res.data.password_user)
         setPhone_number(res.data.phone_number)
         setDescription_job(res.data.description_job)
     }

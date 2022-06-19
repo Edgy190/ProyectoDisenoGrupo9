@@ -25,7 +25,8 @@ const CompEditUser = () => {
     const [phone_number, setPhone_number] = useState('')
     const [description_job, setDescription_job] = useState('')
     const [id_department, setId_department] = useState('')
-    const {email} = useParams()
+
+    const {use_email, email} = useParams()
     const navigate = useNavigate()
 
     const updateUsuario = async (e) => {
@@ -41,7 +42,7 @@ const CompEditUser = () => {
             description_job: description_job,
             id_department: id_department
         })
-        navigate(`/management/${email}`)
+        navigate(`/management/${use_email}`)
     }
     
     useEffect( () => {
@@ -53,7 +54,6 @@ const CompEditUser = () => {
         setFull_name(res.data.full_name)
         setEmail(res.data.email)
         setEmail2(res.data.email2)
-        setPassword_user(res.data.password_user)
         setType_user(res.data.type_user)
         setPhone_number(res.data.phone_number)
         setDescription_job(res.data.description_job)
@@ -75,7 +75,7 @@ const CompEditUser = () => {
                 <div className="container-fluid">
                     <h1>ParkTec</h1>
                     <form className="d-flex">
-                        <Link to={`/management/${email}`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Return</Link>
+                        <Link to={`/management/${use_email}`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Return</Link>
                     </form>
                 </div>
             </nav>
@@ -131,6 +131,7 @@ const CompEditUser = () => {
                             <option value="ADMINISTRADOR SISTEMA" className="form-select">Admin</option>
                             <option value="JEFATURA" className="form-select">Jefatura</option>
                             <option value="FUNCIONARIO" className="form-select">Funcionario</option>
+                            <option value="ENCARGADO" className="form-select">Encargado</option>
                         </select>
                     </div>
                     <div className='mb-3'>

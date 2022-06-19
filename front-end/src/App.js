@@ -17,16 +17,16 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<NavbarComponent/>}/>
-          <Route path='/normalUserManagement/:email' element={<CompNormalManagementComponent/>}/>
-          <Route path='/management/:email' element={<GestionAdminComponent/>}/>
-          <Route path='/contactUser/:email' element={<CompContactUser/>}/>
-          <Route path='/statistics/:email' element={<CompStatistics/>}/>
-          <Route path='/parking/:email' element={<ShowParqueoComponent/>}/>
-          <Route path='/createParking/:email' element={<CompCreateParqueo/>}/>
-          <Route path='/editParking/:email/:id' element={<CompEditParqueo/>}/>
-          <Route path='/registerUser/:email' element={<CompCreateUsuario/>}/>
-          <Route path='/editUser/:email' element={<CompEditUser/>}/>
-          <Route path='/editNormalUser/:email' element={<CompEditNormalUser/>}/>
+          <Route path='/normalUserManagement/:use_email' element={<CompNormalManagementComponent/>}/>
+          <Route path='/management/:use_email' element={<GestionAdminComponent/>}/>
+          <Route path='/contactUser/:use_email' element={<CompContactUser/>}/>
+          <Route path='/statistics/:use_email' element={<CompStatistics/>}/>
+          <Route path='/parking/:use_email' element={<ShowParqueoComponent/>}/>
+          <Route path='/createParking/:use_email' element={<CompCreateParqueo/>}/>
+          <Route path='/editParking/:use_email/:id' element={<CompEditParqueo/>}/>
+          <Route path='/registerUser/:use_email' element={<CompCreateUsuario/>}/>
+          <Route path='/editUser/:use_email/:email' element={<CompEditUser/>}/>
+          <Route path='/editNormalUser/:use_email/:email' element={<CompEditNormalUser/>}/>
         </Routes>
       </BrowserRouter>
   );

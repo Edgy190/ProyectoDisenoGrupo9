@@ -110,6 +110,7 @@ const CompCreateUsuario = () => {
                             <option value="ADMINISTRADOR SISTEMA" className="form-select">Admin</option>
                             <option value="JEFATURA" className="form-select">Jefatura</option>
                             <option value="FUNCIONARIO" className="form-select">Funcionario</option>
+                            <option value="ENCARGADO" className="form-select">Encargado</option>
                         </select>
                     </div>
                     <div className='mb-3'>

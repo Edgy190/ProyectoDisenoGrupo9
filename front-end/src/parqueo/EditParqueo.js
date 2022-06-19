@@ -16,25 +16,32 @@ const btnInfoNavStyle = {
 const CompEditParqueo = () => {
     const [name_parking, setName_parking] = useState('')
     const [type_parking, setType_parking] = useState('')
+    const [email_responsible, setResponsible_email] = useState('')
     const [location_parking, setLocation_parking] = useState('')
     const [schedule_start, setSchedule_start] = useState('')
     const [schedule_end, setSchedule_end] = useState('')
     const [space_parking, setSpace_parking] = useState('')
+    const [space_reserved, setSpace_reserved] = useState('')
+    const [space_disabled, setSpace_disabled] = useState('')
     const navigate = useNavigate()
+    
     const {id} = useParams()
-    const {email} = useParams()
+    const {use_email} = useParams()
 
     const updateParqueo = async (e) => {
         e.preventDefault()
         await axios.put(URI+id, {
             name_parking: name_parking,
             type_parking: type_parking,
+            email_responsible: email_responsible,
             location_parking: location_parking,
             schedule_start: schedule_start,
             schedule_end: schedule_end,
-            space_parking: space_parking
+            space_parking: space_parking,
+            space_reserved: space_reserved,
+            space_disabled: space_disabled
         })
-        navigate(`/parking/${email}`)
+        navigate(`/parking/${use_email}`)
     }
     
     useEffect( () => {
@@ -45,10 +52,13 @@ const CompEditParqueo = () => {
         const res = await axios.get(URI+id)
         setName_parking(res.data.name_parking)
         setType_parking(res.data.type_parking)
+        setResponsible_email(res.data.email_responsible)
         setLocation_parking(res.data.location_parking)
         setSchedule_start(res.data.schedule_start)
         setSchedule_end(res.data.schedule_end)
         setSpace_parking(res.data.space_parking)
+        setSpace_reserved(res.data.space_reserved)
+        setSpace_disabled(res.data.space_disabled)
     }
 
     return(
@@ -57,7 +67,7 @@ const CompEditParqueo = () => {
                 <div className="container-fluid">
                     <h1>ParkTec</h1>
                     <form className="d-flex">
-                        <Link to={`/parking/${email}`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Return</Link>
+                        <Link to={`/parking/${use_email}`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Return</Link>
                     </form>
                 </div>
             </nav>
@@ -76,10 +86,17 @@ const CompEditParqueo = () => {
                         <label className='form-label'>Type of Parking*</label>
                         <select className="form-select" aria-label="Default select example" value={type_parking} onChange={(e) => setType_parking(e.target.value)}>
                             <option selected>Select a type</option>
-                            <option value="PRINCIPAL" className="form-select">Principal</option>
-                            <option value="CAMPUS" className="form-select">Campus</option>
+                            <option value="PROPIO" className="form-select">Propio</option>
                             <option value="SUBCONTRATADO" className="form-select">Subcontratado</option>
                         </select>
+                    </div>
+                    <div className='mb-3'>
+                        <label className='form-label'>Responsible Email</label>
+                        <input
+                            value={email_responsible}
+                            onChange={(e) => setResponsible_email(e.target.value)}
+                            type="email"
+                            className='form-control'/>
                     </div>
                     <div className='mb-3'>
                         <label className='form-label'>Location</label>
@@ -110,6 +127,24 @@ const CompEditParqueo = () => {
                         <input
                             value={space_parking}
                             onChange={(e) => setSpace_parking(e.target.value)}
+                            type="number"
+                            min={0}
+                            className='form-control'/>
+                    </div>
+                    <div className='mb-3'>
+                        <label className='form-label'>Space Reserved</label>
+                        <input
+                            value={space_reserved}
+                            onChange={(e) => setSpace_reserved(e.target.value)}
+                            type="number"
+                            min={0}
+                            className='form-control'/>
+                    </div>
+                    <div className='mb-3'>
+                        <label className='form-label'>Space For Disabled</label>
+                        <input
+                            value={space_disabled}
+                            onChange={(e) => setSpace_disabled(e.target.value)}
                             type="number"
                             min={0}
                             className='form-control'/>
