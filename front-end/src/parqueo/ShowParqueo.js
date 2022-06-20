@@ -48,7 +48,7 @@ const ShowParqueoComponent = () => {
               <div className="card-body">
                 <h1>{parking.name_parking}</h1>
                   <p>Type: {parking.type_parking}</p>
-                  <p>Name Responsible: {parking.email_responsible}</p>
+                  <p>Email Responsible: {parking.email_responsible}</p>
                   <p>Location: {parking.location_parking}</p>
                   <p>Schedule Start: {parking.schedule_start}</p>
                   <p>Schedule End: {parking.schedule_end}</p>

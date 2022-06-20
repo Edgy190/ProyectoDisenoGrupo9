@@ -27,6 +27,9 @@ const CompStatistics = () => {
                     </form>
                 </div>
             </nav>
+            <div className='container'>
+
+            </div>
         </div>
     )
 }

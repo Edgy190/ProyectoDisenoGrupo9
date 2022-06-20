@@ -6,9 +6,9 @@ const router = express.Router();
 
 ////////////////////////////////////////////////////ROUTES VEHICLE
 router.get('registrarVehiculo/', getAllVehicles);
-router.get('registrarVehiculo/:id', getVehicle);
+router.get('registrarVehiculo/:vehicle_plate', getVehicle);
 router.post('registrarVehiculo/', createVehicle);
-router.put('registrarVehiculo/:id', updateVehicle);
-router.delete('registrarVehiculo/:id', deleteVehicle);
+router.put('registrarVehiculo/:vehicle_plate', updateVehicle);
+router.delete('registrarVehiculo/:vehicle_plate', deleteVehicle);
 
 export default router;

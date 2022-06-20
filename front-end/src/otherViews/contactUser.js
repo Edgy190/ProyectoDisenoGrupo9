@@ -5,7 +5,7 @@ import '../Style.css'
 import {Link} from 'react-router-dom'
 
 const URIUser = 'http://localhost:8000/registerUser/'
-const URIDepartment = 'http://localhost:8000/departmentUser/'
+const URIDepartment = 'http://localhost:8000/department/'
 
 const btnInfoNavStyle = {
     marginTop: "5px",

@@ -4,7 +4,7 @@ import { DataTypes } from "sequelize";
 const ParkingModel = db.define('parkings', {
     name_parking: { type: DataTypes.STRING },
     type_parking: { type: DataTypes.STRING },
-    email_responsible: { type: DataTypes.STRING, allowNull: true, defaultValue: ""},
+    email_responsible: { type: DataTypes.STRING },
     location_parking: { type: DataTypes.STRING },
     schedule_start: { type: DataTypes.STRING },
     schedule_end: { type: DataTypes.STRING },

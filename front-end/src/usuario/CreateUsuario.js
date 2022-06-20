@@ -17,7 +17,7 @@ const btnInfoNavStyle = {
   }
 
 const CompCreateUsuario = () => {
-    const {email} = useParams()
+    const {use_email} = useParams()
 
     const [full_name, setFull_name] = useState('')
     const [emailRegis, setEmail] = useState('')
@@ -45,7 +45,7 @@ const CompCreateUsuario = () => {
         await axios.post(URIUser, {full_name: full_name, email: emailRegis, email2: emailRegis2,
             password_user: hashedPassword, type_user: type_user, phone_number: phone_number,
             description_job: description_job, id_department: id_department});
-        navigate(`/management/${email}`);
+        navigate(`/management/${use_email}`);
     }
 
     return(
@@ -54,7 +54,7 @@ const CompCreateUsuario = () => {
                 <div className="container-fluid">
                     <h1>ParkTec</h1>
                     <form className="d-flex">
-                        <Link to={`/management/${email}`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Return</Link>
+                        <Link to={`/management/${use_email}`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Return</Link>
                     </form>
                 </div>
             </nav>

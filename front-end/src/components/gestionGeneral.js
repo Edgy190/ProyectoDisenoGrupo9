@@ -46,6 +46,9 @@ const CompNormalManagementComponent = () => {
                 <Link to={`/vehicle/${email}`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-car" style={iconStyle}><h5> Mis vehiculos </h5></i></Link>
                 <Link to={`/editNormalUser/${email}`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-pen-to-square" style={iconStyle}><h5> Editar Perfil </h5></i></Link>  
             </div>
+            <div className='centerButton'>
+                <Link to={`/editUser/${email}/${email}`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-calendar-days" style={iconStyle}><h5>Franjas Horarias</h5></i></Link>
+            </div>
         </div>
     )
 }

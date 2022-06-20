@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 import { useNavigate, useParams } from 'react-router-dom';
 
 const URIUser = 'http://localhost:8000/registerUser/'
-const URIDepartment = 'http://localhost:8000/departmentUser/'
+const URIDepartment = 'http://localhost:8000/department/'
 
 var bcrypt = require('bcryptjs');
 
