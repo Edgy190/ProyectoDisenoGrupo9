@@ -2,6 +2,7 @@ import express from "express";;
 import cors from "cors";
 import db from "./config/db.js"
 import routesParking from "./routes/routesParking.js"
+import routesParkingEncargado from "./routes/routesParkingEncargado.js"
 import routesDepartment from "./routes/routesDepartment.js"
 import routesUser from "./routes/routesUser.js"
 import auth from "./routes/auth.js"
@@ -12,6 +13,7 @@ app.use( cors() );
 app.use(express.json());
 app.use('/', auth);
 app.use('/parking', routesParking);
+app.use('/parkingEncargado', routesParkingEncargado);
 app.use('/registerUser', routesUser);
 app.use('/department', routesDepartment);
 

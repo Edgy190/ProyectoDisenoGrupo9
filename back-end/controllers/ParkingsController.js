@@ -20,6 +20,17 @@ export const getParking = async (req, res) => {
     }
 }
 
+export const getParkingEmail = async (req, res) => {
+    try {
+        const parkings = await ParkingModel.findAll({
+            where: { email_responsible: req.params.use_email }
+        });
+        res.json(parkings);
+    } catch (error) {
+        res.json( {message: error.message} );
+    }
+}
+
 export const createParking = async (req, res) => {
     try {
         await ParkingModel.create(req.body)

@@ -15,7 +15,7 @@ const btnInfoNavStyle = {
 
 const CompStatistics = () => {
 
-    const {email} = useParams()
+    const {use_email} = useParams()
 
     return(
         <div className='createParqueo'>
@@ -23,12 +23,17 @@ const CompStatistics = () => {
                 <div className="container-fluid">
                     <h1>ParkTec</h1>
                     <form className="d-flex">
-                        <Link to={`/management/${email}`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Return</Link>
+                        <Link to={`/management/${use_email}`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Return</Link>
                     </form>
                 </div>
             </nav>
             <div className='container'>
-
+            <select className="form-select" aria-label="Default select example">
+                <option value="InfoGeneralParqueo" className="form-select">Ver información general de los estacionamientos</option>
+                <option value="InfoGeneralFuncionario" className="form-select">Ver información general de los funcionarios</option>
+                <option value="InfoPorcentajeOcupacionParqueo" className="form-select">Ver porcentaje de ocupación de un estacionamiento particular</option>
+                <option value="InfoOcupaciónDepartamento" className="form-select">Ver ocupación por departamento</option>
+            </select>
             </div>
         </div>
     )

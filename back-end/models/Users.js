@@ -13,6 +13,7 @@ const UserModel = db.define('users', {
     type_user: { type: DataTypes.STRING },
     phone_number: { type: DataTypes.INTEGER },
     description_job: { type: DataTypes.STRING },
+    disability: { type: DataTypes.STRING },
     id_department: { type: DataTypes.INTEGER }
 });
 

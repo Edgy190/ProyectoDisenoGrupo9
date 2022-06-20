@@ -24,6 +24,7 @@ const CompEditUser = () => {
     const [type_user, setType_user] = useState('')
     const [phone_number, setPhone_number] = useState('')
     const [description_job, setDescription_job] = useState('')
+    const [disability, setDisability] = useState('')
     const [id_department, setId_department] = useState('')
 
     const {use_email, email} = useParams()
@@ -40,9 +41,10 @@ const CompEditUser = () => {
             type_user: type_user,
             phone_number: phone_number,
             description_job: description_job,
+            disability: disability,
             id_department: id_department
         })
-        navigate(`/management/${use_email}`)
+        navigate(`/contactUser/${use_email}`)
     }
     
     useEffect( () => {
@@ -57,6 +59,7 @@ const CompEditUser = () => {
         setType_user(res.data.type_user)
         setPhone_number(res.data.phone_number)
         setDescription_job(res.data.description_job)
+        setDisability(res.data.disability)
         setId_department(res.data.id_department)
     }
 
@@ -75,7 +78,7 @@ const CompEditUser = () => {
                 <div className="container-fluid">
                     <h1>ParkTec</h1>
                     <form className="d-flex">
-                        <Link to={`/management/${use_email}`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Return</Link>
+                        <Link to={`/contactUser/${use_email}`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Return</Link>
                     </form>
                 </div>
             </nav>
@@ -83,7 +86,7 @@ const CompEditUser = () => {
                 <h3>Edit Profile</h3>
                 <form onSubmit={updateUsuario}>
                     <div className='mb-3'>
-                        <label className='form-label'>Email*</label>
+                        <label className='form-label'>Email</label>
                         <input
                             value={emailRegis}
                             onChange={(e) => setEmail(e.target.value)}
@@ -91,7 +94,7 @@ const CompEditUser = () => {
                             className='form-control'/>
                     </div>
                     <div className='mb-3'>
-                        <label className='form-label'>Alternate Email</label>
+                        <label className='form-label'>Alternate Email *Optional</label>
                         <input
                             value={emailRegis2}
                             onChange={(e) => setEmail2(e.target.value)}
@@ -99,7 +102,7 @@ const CompEditUser = () => {
                             className='form-control'/>
                     </div>
                     <div className='mb-3'>
-                        <label className='form-label'>Password*</label>
+                        <label className='form-label'>Password</label>
                         <input
                             value={password_user}
                             onChange={(e) => setPassword_user(e.target.value)}
@@ -107,7 +110,7 @@ const CompEditUser = () => {
                             className='form-control'/>
                     </div>
                     <div className='mb-3'>
-                        <label className='form-label'>Full Name*</label>
+                        <label className='form-label'>Full Name</label>
                         <input
                             value={full_name}
                             onChange={(e) => setFull_name(e.target.value)}
@@ -115,7 +118,7 @@ const CompEditUser = () => {
                             className='form-control'/>
                     </div>
                     <div className='mb-3'>
-                        <label className='form-label'>Phone Number*</label>
+                        <label className='form-label'>Phone Number</label>
                         <input
                             value={phone_number}
                             onChange={(e) => setPhone_number(e.target.value)}
@@ -125,7 +128,7 @@ const CompEditUser = () => {
                             className='form-control'/>
                     </div>
                     <div className='mb-3'>
-                        <label className='form-label'>Type of User*</label>
+                        <label className='form-label'>Type of User</label>
                         <select className="form-select" aria-label="Default select example" value={type_user} onChange={(e) => setType_user(e.target.value)}>
                             <option selected>Select a type</option>
                             <option value="ADMINISTRADOR SISTEMA" className="form-select">Admin</option>
@@ -135,7 +138,7 @@ const CompEditUser = () => {
                         </select>
                     </div>
                     <div className='mb-3'>
-                        <label className='form-label'>Department*</label>
+                        <label className='form-label'>Department</label>
                         <select className="form-select" aria-label="Default select example" value={id_department} onChange={(e) => setId_department(e.target.value)}>
                             <option selected>Select a Department</option>
                             { departments.map((department) => (
@@ -144,12 +147,20 @@ const CompEditUser = () => {
                         </select>
                     </div>
                     <div className='mb-3'>
-                        <label className='form-label'>Job Description*</label>
+                        <label className='form-label'>Job Description</label>
                         <textarea
                             value={description_job}
                             onChange={(e) => setDescription_job(e.target.value)}
                             type="text"
                             className='form-control'/>
+                    </div>
+                    <div>
+                        <label className='form-label'>Disability</label>
+                        <select className="form-select" aria-label="Default select example" value={disability} onChange={(e) => setDisability(e.target.value)}>
+                            <option selected>Disability status</option>
+                            <option value="T" className="form-select">True</option>
+                            <option value="F" className="form-select">False</option>
+                        </select>
                     </div>
                     <button type='submit' className='btn btn-primary'>Modify</button>
                 </form>

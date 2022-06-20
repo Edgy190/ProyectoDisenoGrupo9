@@ -22,34 +22,33 @@ const CompEditNormalUser = () => {
     const [emailRegis2, setEmail2] = useState('')
     const [password_user, setPassword_user] = useState('')
     const [phone_number, setPhone_number] = useState('')
-    const [description_job, setDescription_job] = useState('')
-    const { email } = useParams()
+    const [type_user, setType_user] = useState('')
+    const { use_email } = useParams()
     const navigate = useNavigate()
 
     const updateUsuario = async (e) => {
         const hashedPassword = bcrypt.hashSync(password_user, 8);
         e.preventDefault()
-        await axios.put(URIUser+email, {
+        await axios.put(URIUser+use_email, {
             full_name: full_name,
             email: emailRegis,
             email2: emailRegis2,
             password_user: hashedPassword,
             phone_number: phone_number,
-            description_job: description_job
         })
-        navigate(`/normalUserManagement/${email}`)
+        navigate(`/${type_user}/${use_email}`)
     }
     
     useEffect( () => {
         getUsuarioByEmail()
     }, [])
     const getUsuarioByEmail = async () => {
-        const res = await axios.get(URIUser+email)
+        const res = await axios.get(URIUser+use_email)
         setFull_name(res.data.full_name)
         setEmail(res.data.email)
         setEmail2(res.data.email2)
         setPhone_number(res.data.phone_number)
-        setDescription_job(res.data.description_job)
+        setType_user(res.data.type_user)
     }
     
     return(
@@ -58,7 +57,7 @@ const CompEditNormalUser = () => {
                 <div className="container-fluid">
                     <h1>ParkTec</h1>
                     <form className="d-flex">
-                        <Link to={`/normalUserManagement/${email}`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Return</Link>
+                        <Link to={`/${type_user}/${use_email}`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Return</Link>
                     </form>
                 </div>
             </nav>
@@ -66,7 +65,7 @@ const CompEditNormalUser = () => {
                 <h3>Edit Profile</h3>
                 <form onSubmit={updateUsuario}>
                     <div className='mb-3'>
-                        <label className='form-label'>Email*</label>
+                        <label className='form-label'>Email</label>
                         <input
                             value={emailRegis}
                             onChange={(e) => setEmail(e.target.value)}
@@ -74,7 +73,7 @@ const CompEditNormalUser = () => {
                             className='form-control'/>
                     </div>
                     <div className='mb-3'>
-                        <label className='form-label'>Alternate Email</label>
+                        <label className='form-label'>Alternate Email *Optional</label>
                         <input
                             value={emailRegis2}
                             onChange={(e) => setEmail2(e.target.value)}
@@ -82,7 +81,7 @@ const CompEditNormalUser = () => {
                             className='form-control'/>
                     </div>
                     <div className='mb-3'>
-                        <label className='form-label'>Password*</label>
+                        <label className='form-label'>Password</label>
                         <input
                             value={password_user}
                             onChange={(e) => setPassword_user(e.target.value)}
@@ -90,7 +89,7 @@ const CompEditNormalUser = () => {
                             className='form-control'/>
                     </div>
                     <div className='mb-3'>
-                        <label className='form-label'>Full Name*</label>
+                        <label className='form-label'>Full Name</label>
                         <input
                             value={full_name}
                             onChange={(e) => setFull_name(e.target.value)}
@@ -98,21 +97,13 @@ const CompEditNormalUser = () => {
                             className='form-control'/>
                     </div>
                     <div className='mb-3'>
-                        <label className='form-label'>Phone Number*</label>
+                        <label className='form-label'>Phone Number</label>
                         <input
                             value={phone_number}
                             onChange={(e) => setPhone_number(e.target.value)}
                             max={99999999}
                             min={10000000}
                             type="number"
-                            className='form-control'/>
-                    </div>
-                    <div className='mb-3'>
-                        <label className='form-label'>Job Description*</label>
-                        <textarea
-                            value={description_job}
-                            onChange={(e) => setDescription_job(e.target.value)}
-                            type="text"
                             className='form-control'/>
                     </div>
                     <button type='submit' className='btn btn-primary'>Modify</button>

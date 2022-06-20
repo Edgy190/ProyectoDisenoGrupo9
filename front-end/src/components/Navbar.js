@@ -20,8 +20,12 @@ const NavbarComponent = () => {
     if (bcrypt.compareSync(password_user, authUserResult.data.password_user)) {
       if (authUserResult.data.type_user == "ADMINISTRADOR SISTEMA") {
         navigate(`/management/${use_email}`)
-      } else {
-        navigate(`/normalUserManagement/${use_email}`)
+      } if (authUserResult.data.type_user == "JEFATURA") {
+        navigate(`/JEFATURA/${use_email}`)
+      } if (authUserResult.data.type_user == "FUNCIONARIO") {
+        navigate(`/FUNCIONARIO/${use_email}`)
+      } if (authUserResult.data.type_user == "ENCARGADO") {
+        navigate(`/ENCARGADO/${use_email}`)
       }
     } else {
       throw alert("Incorrect password or email")

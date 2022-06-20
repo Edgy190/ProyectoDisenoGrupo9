@@ -5,7 +5,6 @@ import '../Style.css'
 import {Link} from 'react-router-dom'
 
 const URIUser = 'http://localhost:8000/registerUser/'
-const URIDepartment = 'http://localhost:8000/department/'
 
 const btnInfoNavStyle = {
     marginTop: "5px",
@@ -37,15 +36,6 @@ const CompContactUser = () => {
     const deleteUser = async (email) => {
         await axios.delete(`${URIUser}${email}`);
         getUsers();
-    }
-
-    const [departments, setDepartments] = useState([])
-    useEffect( () => {
-        getDepartments()
-    },[])
-    const getDepartments = async () => {
-        const res = await axios.get(URIDepartment);
-        setDepartments(res.data);
     }
 
     const sendMessage = async () => {
@@ -93,6 +83,7 @@ const CompContactUser = () => {
                                         <th scope="col">Type of user</th>
                                         <th scope="col">Phone number</th>
                                         <th scope="col">Job description</th>
+                                        <th scope="col">Disability</th>
                                         <th scope="col">Department</th>
                                         <th scope="col">Edit</th>
                                         <th scope="col">Delete</th>
@@ -107,6 +98,7 @@ const CompContactUser = () => {
                                             <td>{ user.type_user }</td>
                                             <td>{ user.phone_number }</td>
                                             <td>{ user.description_job }</td>
+                                            <td>{ user.disability }</td>
                                             <td>{ user.id_department }</td>
                                             <td><Link to={`/editUser/${use_email}/${user.email}`} className="btn btn-info" type="button"><i className="fa-solid fa-pen-to-square"></i></Link></td>
                                             <td><button onClick={ () => deleteUser(user.email)} className='btn btn-danger' style={btnInfoNavStyle}><i className="fa-solid fa-circle-minus"></i></button></td>

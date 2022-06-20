@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const URIUser = `http://localhost:8000/registerUser/`
-const URIDepartment = 'http://localhost:8000/departmentUser/'
+const URIDepartment = 'http://localhost:8000/department/'
 
 var bcrypt = require('bcryptjs');
 
@@ -26,6 +26,7 @@ const CompCreateUsuario = () => {
     const [type_user, setType_user] = useState('')
     const [phone_number, setPhone_number] = useState('')
     const [description_job, setDescription_job] = useState('')
+    const [disability, setDisability] = useState('')
     const [id_department, setId_department] = useState('')
     
     const [departments, setDepartments] = useState([])
@@ -44,7 +45,7 @@ const CompCreateUsuario = () => {
         e.preventDefault();
         await axios.post(URIUser, {full_name: full_name, email: emailRegis, email2: emailRegis2,
             password_user: hashedPassword, type_user: type_user, phone_number: phone_number,
-            description_job: description_job, id_department: id_department});
+            description_job: description_job, disability: disability, id_department: id_department});
         navigate(`/management/${use_email}`);
     }
 
@@ -62,7 +63,7 @@ const CompCreateUsuario = () => {
                 <h3>Create User</h3>
                 <form onSubmit={createUser}>
                     <div className='mb-3'>
-                        <label className='form-label'>Email*</label>
+                        <label className='form-label'>Email</label>
                         <input
                             value={emailRegis}
                             onChange={(e) => setEmail(e.target.value)}
@@ -70,7 +71,7 @@ const CompCreateUsuario = () => {
                             className='form-control'/>
                     </div>
                     <div className='mb-3'>
-                        <label className='form-label'>Alternate Email</label>
+                        <label className='form-label'>Alternate Email *Optional</label>
                         <input
                             value={emailRegis2}
                             onChange={(e) => setEmail2(e.target.value)}
@@ -78,7 +79,7 @@ const CompCreateUsuario = () => {
                             className='form-control'/>
                     </div>
                     <div className='mb-3'>
-                        <label className='form-label'>Password*</label>
+                        <label className='form-label'>Password</label>
                         <input
                             value={password_user}
                             onChange={(e) => setPassword_user(e.target.value)}
@@ -86,7 +87,7 @@ const CompCreateUsuario = () => {
                             className='form-control'/>
                     </div>
                     <div className='mb-3'>
-                        <label className='form-label'>Full Name*</label>
+                        <label className='form-label'>Full Name</label>
                         <input
                             value={full_name}
                             onChange={(e) => setFull_name(e.target.value)}
@@ -94,7 +95,7 @@ const CompCreateUsuario = () => {
                             className='form-control'/>
                     </div>
                     <div className='mb-3'>
-                        <label className='form-label'>Phone Number*</label>
+                        <label className='form-label'>Phone Number</label>
                         <input
                             value={phone_number}
                             onChange={(e) => setPhone_number(e.target.value)}
@@ -104,7 +105,7 @@ const CompCreateUsuario = () => {
                             className='form-control'/>
                     </div>
                     <div className='mb-3'>
-                        <label className='form-label'>Type of User*</label>
+                        <label className='form-label'>Type of User</label>
                         <select className="form-select" aria-label="Default select example" value={type_user} onChange={(e) => setType_user(e.target.value)}>
                             <option selected>Select a type</option>
                             <option value="ADMINISTRADOR SISTEMA" className="form-select">Admin</option>
@@ -114,21 +115,29 @@ const CompCreateUsuario = () => {
                         </select>
                     </div>
                     <div className='mb-3'>
-                        <label className='form-label'>Department*</label>
+                        <label className='form-label'>Department</label>
                         <select className="form-select" aria-label="Default select example" value={id_department} onChange={(e) => setId_department(e.target.value)}>
                             <option selected>Select a Department</option>
                             { departments.map((department) => (
-                                <option key={department.id} value={department.id} className="form-select">{department.name_department}</option>
+                                <option key={department.name_department} value={department.name_department} className="form-select">{department.name_department}</option>
                             ))}
                         </select>
                     </div>
                     <div className='mb-3'>
-                        <label className='form-label'>Job Description*</label>
+                        <label className='form-label'>Job Description</label>
                         <textarea
                             value={description_job}
                             onChange={(e) => setDescription_job(e.target.value)}
                             type="text"
                             className='form-control'/>
+                    </div>
+                    <div>
+                        <label className='form-label'>Disability</label>
+                        <select className="form-select" aria-label="Default select example" value={disability} onChange={(e) => setDisability(e.target.value)}>
+                            <option selected>Disability status</option>
+                            <option value="T" className="form-select">True</option>
+                            <option value="F" className="form-select">False</option>
+                        </select>
                     </div>
                     <button type='submit' className='btn btn-primary'>Create</button>
                 </form>
