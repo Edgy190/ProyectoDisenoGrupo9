@@ -29,7 +29,6 @@ const btnInfoNavStyle = {
 }
 
 const CompJefaturaManagementComponent = () => {
-
     const {use_email} = useParams()
 
     return (
@@ -43,11 +42,11 @@ const CompJefaturaManagementComponent = () => {
                 </div>
             </nav>
             <div className='centerButton'>
-                <Link to={`/editUser/${use_email}/${use_email}`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-calendar-day" style={iconStyle}><h5>Reservar</h5></i></Link>
+                <Link to={`/reservation/${use_email}`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-calendar-day" style={iconStyle}><h5>Reservar</h5></i></Link>
                 <Link to={`/vehicle/${use_email}`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-car" style={iconStyle}><h5> Mis vehiculos </h5></i></Link>
             </div>
             <div className='centerButton'>
-                <Link to={`/editUser/${use_email}/${use_email}`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-calendar-days" style={iconStyle}><h5>Franjas Horarias</h5></i></Link>
+                <Link to={`/franjaHoraria/${use_email}`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-calendar-days" style={iconStyle}><h5>Franjas Horarias</h5></i></Link>
                 <Link to={`/editNormalUser/${use_email}`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-pen-to-square" style={iconStyle}><h5> Editar Perfil </h5></i></Link>  
             </div>
         </div>

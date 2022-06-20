@@ -13,7 +13,7 @@ export const getVehicle = async (req, res) => {
     try {
         const vehicle = await VehicleModel.findAll({
             where: {
-                vehicle_plate: req.params.id
+                vehicle_plate: req.params.vehicle_plate
             }
         });
         res.json(vehicle[0]);
@@ -36,7 +36,7 @@ export const createVehicle = async (req, res) => {
 export const updateVehicle = async (req, res) => {
     try {
         await VehicleModel.update(req.body, {
-            where: {vehicle_plate: req.params.id}
+            where: {vehicle_plate: req.params.vehicle_plate}
         });
         res.json({
             "message":"Vehiculo actualizado"
@@ -49,7 +49,7 @@ export const updateVehicle = async (req, res) => {
 export const deleteVehicle = async (req, res) => {
     try {
         await VehicleModel.destroy({
-            where: {vehicle_plate: req.params.id}
+            where: {vehicle_plate: req.params.vehicle_plate}
         });
         res.json({
             "message":"Vehiculo borrado"

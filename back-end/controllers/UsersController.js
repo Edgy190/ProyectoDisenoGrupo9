@@ -1,4 +1,5 @@
 import UserModel from "../models/Users.js"
+import { Op } from "sequelize";
 
 export const getAllUsers = async (req, res) => {
     try {
@@ -15,6 +16,20 @@ export const getUser = async (req, res) => {
             where: { email: req.params.email }
         });
         res.json(user[0]);
+    } catch (error) {
+        res.json( {message: error.message} );
+    }
+}
+
+export const getUserFuncionario = async (req, res) => {
+    try {
+        const funcionarios = await UserModel.findAll({
+            where: { [Op.or]: [
+                    { type_user: 'JEFATURA' },
+                    { type_user: 'FUNCIONARIO' }
+                ] }
+        });
+        res.json(funcionarios);
     } catch (error) {
         res.json( {message: error.message} );
     }

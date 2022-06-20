@@ -11,6 +11,10 @@ import ShowParqueoComponent from './parqueo/ShowParqueo';
 import CompCreateParqueo from './parqueo/CreateParqueo';
 import CompEditParqueo from './parqueo/EditParqueo';
 
+import ShowVehicleComponent from './vehiculo/ShowVehicle';
+import CompCreateVehicle from './vehiculo/CreateVehicle';
+import CompEditVehicle from './vehiculo/EditVehicle';
+
 import ShowParqueoEncargadoComponent from './parqueo/ShowParqueoEncargado';
 import CompEditParqueoEncargado from './parqueo/EditParqueoEncargado';
 
@@ -53,6 +57,13 @@ function App() {
           <Route path='/parking/:use_email' element={<ShowParqueoComponent/>}/>
           <Route path='/createParking/:use_email' element={<CompCreateParqueo/>}/>
           <Route path='/editParking/:use_email/:id' element={<CompEditParqueo/>}/>
+
+          <Route path='/vehicle/:use_email' element={<ShowVehicleComponent/>}/>
+          <Route path='/createVehicle/:use_email' element={<CompCreateVehicle/>}/>
+          <Route path='/editVehicle/:use_email/:vehicle_plate' element={<CompEditVehicle/>}/>
+
+          <Route path='/vehicleXuser/:use_email' element={<CompCreateVehicle/>}/>
+          <Route path='/vehicleXuser/:use_email/:vehicle_plate' element={<CompEditVehicle/>}/>
 
           <Route path='/parkingEncargado/:use_email' element={<ShowParqueoEncargadoComponent/>}/>
           <Route path='/editParkingEncargado/:use_email/:id' element={<CompEditParqueoEncargado/>}/>

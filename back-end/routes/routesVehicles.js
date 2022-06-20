@@ -5,10 +5,10 @@ import { getAllVehicles, getVehicle, createVehicle, updateVehicle, deleteVehicle
 const router = express.Router();
 
 ////////////////////////////////////////////////////ROUTES VEHICLE
-router.get('registrarVehiculo/', getAllVehicles);
-router.get('registrarVehiculo/:vehicle_plate', getVehicle);
-router.post('registrarVehiculo/', createVehicle);
-router.put('registrarVehiculo/:vehicle_plate', updateVehicle);
-router.delete('registrarVehiculo/:vehicle_plate', deleteVehicle);
+router.get('/', getAllVehicles);
+router.get('/:vehicle_plate', getVehicle);
+router.post('/', createVehicle);
+router.put('/:vehicle_plate', updateVehicle);
+router.delete('/:vehicle_plate', deleteVehicle);
 
 export default router;
