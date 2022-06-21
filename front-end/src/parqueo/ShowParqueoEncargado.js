@@ -25,7 +25,6 @@ const ShowParqueoEncargadoComponent = () => {
     const res = await axios.get(URI+use_email);
     setParking(res.data);
   }
-  console.log(parkings)
   return (
     <div>
       <nav className="navbar navbar-dark bg-primary">

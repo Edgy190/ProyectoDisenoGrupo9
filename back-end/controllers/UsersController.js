@@ -21,6 +21,17 @@ export const getUser = async (req, res) => {
     }
 }
 
+export const getUserDepartamento = async (req, res) => {
+    try {
+        const user = await UserModel.findAll({
+            where: { id_department: req.params.id_department }
+        });
+        res.json(user);
+    } catch (error) {
+        res.json( {message: error.message} );
+    }
+}
+
 export const getUserFuncionario = async (req, res) => {
     try {
         const funcionarios = await UserModel.findAll({

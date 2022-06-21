@@ -19,6 +19,7 @@ const CompEditVehicle = () => {
     const [vehicle_plateChange, setVehicle_plate] = useState('')
     const [vehicle_brand, setVehicle_brand] = useState('')
     const [vehicle_series, setVehicle_series] = useState('')
+    const [official, setOfficial] = useState('')
     const navigate = useNavigate()
 
     const updateVehicle = async (e) => {
@@ -30,7 +31,8 @@ const CompEditVehicle = () => {
         await axios.put(URIVehicle+vehicle_plate, {
             vehicle_plate: vehicle_plateChange,
             vehicle_brand: vehicle_brand,
-            vehicle_series: vehicle_series
+            vehicle_series: vehicle_series,
+            official: official
         })
         navigate(`/vehicle/${use_email}`)
     }
@@ -42,6 +44,7 @@ const CompEditVehicle = () => {
         setVehicle_plate(res.data.vehicle_plate)
         setVehicle_brand(res.data.vehicle_brand)
         setVehicle_series(res.data.vehicle_series)
+        setOfficial(res.data.official)
     }
     return(
         <div className='createParqueo'>
@@ -83,6 +86,14 @@ const CompEditVehicle = () => {
                             type="text"
                             className='form-control'
                             required/>
+                    </div>
+                    <div>
+                        <label className='form-label'>Status</label>
+                        <select className="form-select" aria-label="Default select example" value={official} onChange={(e) => setOfficial(e.target.value)}>
+                            <option selected>Select Status</option>
+                            <option value="OFFICIAL" className="form-select">Official</option>
+                            <option value="UNOFFICIAL" className="form-select">Not Official</option>
+                        </select>
                     </div>
                     <button type='submit' className='btn btn-primary'>Modify</button>
                 </form>

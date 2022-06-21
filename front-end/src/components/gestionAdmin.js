@@ -48,7 +48,7 @@ const GestionAdminComponent = () => {
                 <Link to={`/contactUser/${use_email}`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-user" style={iconStyle}><h5>MANAGE USERS</h5></i></Link>
             </div>
             <div className='centerButton'>
-            <Link to={`/registerUser/${use_email}`} className="btn btn-info" style={btnInfoStyle} type="button"><i class="fa-solid fa-circle-plus" style={iconStyle}><h5>ADD USER</h5></i></Link>
+                <Link to={`/registerUser/${use_email}`} className="btn btn-info" style={btnInfoStyle} type="button"><i class="fa-solid fa-circle-plus" style={iconStyle}><h5>ADD USER</h5></i></Link>
                 <Link to={`/statistics/${use_email}`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-chart-pie" style={iconStyle}><h5>STATISTICS</h5></i></Link>
             </div>
         </div>

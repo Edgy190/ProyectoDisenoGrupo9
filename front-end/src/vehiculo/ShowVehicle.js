@@ -59,6 +59,7 @@ const ShowVehicleComponent = () => {
                     <h1>{vehicle.vehicle_plate}</h1>
                     <p>Brand: {vehicle.vehicle_brand}</p>
                     <p>Series: {vehicle.vehicle_series}</p>
+                    <p>Status: {vehicle.official}</p>
                     <Link to={`/editVehicle/${use_email}/${vehicle.vehicle_plate}`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Edit Vehicle</Link>
                     <button onClick={ () => deleteVehicle(vehicle.vehicle_plate)} className='btn btn-danger' style={btnInfoNavStyle}><i className="fa-solid fa-circle-minus"></i></button>
                 </div>

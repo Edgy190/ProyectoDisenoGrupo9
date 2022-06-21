@@ -19,6 +19,7 @@ const CompCreateVehicle = () => {
     const [vehicle_plate, setVehicle_plate] = useState('')
     const [vehicle_brand, setVehicle_brand] = useState('')
     const [vehicle_series, setVehicle_series] = useState('')
+    const [official, setOfficial] = useState('')
     
     const navigate = useNavigate()
 
@@ -26,7 +27,8 @@ const CompCreateVehicle = () => {
 
     const createVehicle = async (e) => {
         e.preventDefault()
-        await axios.post(URIVehicle, {vehicle_plate: vehicle_plate, vehicle_brand: vehicle_brand, vehicle_series: vehicle_series})
+        await axios.post(URIVehicle, {vehicle_plate: vehicle_plate, vehicle_brand: vehicle_brand, vehicle_series: vehicle_series,
+            official: official})
         await axios.post(URIVehicleXUser, {vehicle_plate: vehicle_plate, email: use_email})
         navigate(`/vehicle/${use_email}`)
     }
@@ -71,6 +73,14 @@ const CompCreateVehicle = () => {
                             type="text"
                             className='form-control'
                             required/>
+                    </div>
+                    <div>
+                        <label className='form-label'>Status</label>
+                        <select className="form-select" aria-label="Default select example" value={official} onChange={(e) => setOfficial(e.target.value)}>
+                            <option selected>Select Status</option>
+                            <option value="OFFICIAL" className="form-select">Official</option>
+                            <option value="UNOFFICIAL" className="form-select">Not Official</option>
+                        </select>
                     </div>
                     <button type='submit' className='btn btn-primary'>Create</button>
                 </form>

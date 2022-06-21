@@ -8,6 +8,7 @@ import routesParkingEncargado from "./routes/routesParkingEncargado.js"
 import routesDepartment from "./routes/routesDepartment.js"
 import routesUser from "./routes/routesUser.js"
 import routesStatistics from "./routes/routesStatistics.js"
+import routesStatisticsJefatura from "./routes/routesStatisticsJefatura.js"
 import auth from "./routes/auth.js"
 
 const app = express();
@@ -19,6 +20,7 @@ app.use('/parking', routesParking);
 app.use('/parkingEncargado', routesParkingEncargado);
 app.use('/registerUser', routesUser);
 app.use('/funcionarios', routesStatistics);
+app.use('/jefaturaStatistics', routesStatisticsJefatura);
 app.use('/vehicle', routesVehicle);
 app.use('/vehicleXuser', routesVehicleXUser);
 app.use('/department', routesDepartment);

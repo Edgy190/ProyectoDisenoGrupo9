@@ -1,6 +1,9 @@
 import './Style.css';
 import CompJefaturaManagementComponent from './components/gestionJefatura';
+import CompStatisticsJefatura from './otherViews/statisticsJefatura';
+
 import GestionFuncionarioComponent from './components/gestionFuncionario';
+
 import CompEncargadoManagementComponent from './components/gestionEncargado';
 
 import ShowDepartmentComponent from './departamento/ShowDepartment';
@@ -42,6 +45,7 @@ function App() {
           <Route path='/management/:use_email' element={<GestionAdminComponent/>}/>
 
           <Route path='/JEFATURA/:use_email' element={<CompJefaturaManagementComponent/>}/>
+          <Route path='/statisticsJefatura/:use_email/:id_department' element={<CompStatisticsJefatura/>}/>
 
           <Route path='/FUNCIONARIO/:use_email' element={<GestionFuncionarioComponent/>}/>
 
